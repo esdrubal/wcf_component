@@ -1,0 +1,6 @@
+[submodule "external/corefx"]
+	path = external/corefx
+	url = git@github.com:dotnet/corefx.git
+[submodule "external/wcf"]
+	path = external/wcf
+	url = git@github.com:esdrubal/wcf.git
