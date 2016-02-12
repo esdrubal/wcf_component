@@ -3,9 +3,9 @@
 build.sh builds dotnet/wcf to be ran with mono runtime and class libraries.
 build.sh also runs all the tests that dotnet/wcf runs in OSX.
 
-After running build.sh System.ServiceModel.dll can be found in bin/System.ServiceModel.
+After running build.sh System.Private.ServiceModel.dll can be found in bin/System.ServiceModel.
 
-The generated System.ServiceModel.dll was not tested yet on the Android on iOS.
+The generated System.Private.ServiceModel.dll was not tested yet on the Android on iOS.
 
 ## How to build
 
