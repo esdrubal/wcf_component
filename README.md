@@ -13,7 +13,7 @@ build.sh depends on changes that are on mono/master.
 
 If you already have an updated mono master installed on your system you can do:
 ```
-git clone git@github.com:esdrubal/wcf_component.git
+git clone --recursive git@github.com:esdrubal/wcf_component.git
 cd wcf_component
 export MONO_PREFIX="/path/to/mono/install"
 ./build.sh
@@ -21,7 +21,7 @@ export MONO_PREFIX="/path/to/mono/install"
 
 If you don't have mono master installed you can do:
 ```
-git clone git@github.com:esdrubal/wcf_component.git
+git clone --recursive git@github.com:esdrubal/wcf_component.git
 cd wcf_component
 
 git clone git@github.com:mono/mono.git
