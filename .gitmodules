@@ -4,3 +4,6 @@
 [submodule "external/wcf"]
 	path = external/wcf
 	url = git@github.com:esdrubal/wcf.git
+[submodule "external/buildtools"]
+	path = external/buildtools
+	url = git@github.com:dotnet/buildtools.git

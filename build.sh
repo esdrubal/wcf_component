@@ -30,8 +30,8 @@ SRC_DIR="$BASE_DIR/src"
 
 XUNIT_ARGS="-lib:lib/xunit -r:xunit.core -r:xunit.assert -r:xunit.abstractions -r:xunit.execution.dotnet"
 
-TEST_ARGS="-r:System.ServiceModel -r:UnitTests.Common -r:System.Runtime -r:System.Threading.Tasks -r:System.Runtime.Serialization $XUNIT_ARGS"
-SCENARIO_ARGS="-r:System.ServiceModel -r:Infrastructure.Common -r:ScenarioTests.Common.dll -r:System.Runtime -r:System.Threading.Tasks -r:System.Runtime.Serialization $XUNIT_ARGS"
+TEST_ARGS="-r:System.Private.ServiceModel -r:UnitTests.Common -r:System.Runtime -r:System.Threading.Tasks -r:System.Runtime.Serialization $XUNIT_ARGS"
+SCENARIO_ARGS="-r:System.Private.ServiceModel -r:Infrastructure.Common -r:ScenarioTests.Common.dll -r:System.Runtime -r:System.Threading.Tasks -r:System.Runtime.Serialization $XUNIT_ARGS"
 
 IGNORE_REFS="xunit System.ServiceModel.Primitives System.ServiceModel.Http System.ServiceModel.Duplex System.ServiceModel.Security System.ServiceModel.NetTcp"
 
@@ -74,8 +74,6 @@ build "System.Private.ServiceModel.dll" \
     external/corefx/src/System.Net.Sockets/src/System/Net/Sockets/SocketReceiveFromResult.cs
     -d:FEATURE_CORECLR"
 
-mv $OUT_DIR/System.Private.ServiceModel.dll $OUT_DIR/System.ServiceModel.dll
-
 echo
 echo "Building tests"
 
@@ -91,7 +89,7 @@ build "xunit.netcore.extensions.dll" \
 
 build "UnitTests.Common.dll" \
     "external/wcf/src/System.Private.ServiceModel/tests/Common/Unit/" \
-    "-r:System.ServiceModel -r:System.Runtime.Serialization"
+    "-r:System.Private.ServiceModel -r:System.Runtime.Serialization"
 
 build "System.Private.ServiceModel.Tests.dll" "external/wcf/src/System.Private.ServiceModel/tests/Unit/" "$TEST_ARGS"
 build "System.ServiceModel.Primitives.Tests.dll" "external/wcf/src/System.ServiceModel.Primitives/tests/" "$TEST_ARGS"
