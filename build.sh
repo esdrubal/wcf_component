@@ -1,7 +1,29 @@
 #!/bin/sh
 
-BCL_DIR=../mono/mono8/mcs/class/lib/net_4_x
+
+if [ -z "$MONO_PREFIX" ]; then
+    echo "Env var MONO_PREFIX needs to be set to a recent mono install"
+    exit
+fi
+
+if [ ! -e "$MONO_PREFIX/bin/mono" ]; then
+    echo "MONO_PREFIX is set to $MONO_PREFIX"
+    echo "MONO_PREFIX is not pointing to a mono installation"
+    exit
+fi
+
+MONO_PREFIX="$( cd "$MONO_PREFIX" && pwd )"
+
+BCL_DIR=$MONO_PREFIX/lib/mono/4.5
 PCL_DIR=$BCL_DIR/Facades
+
+export DYLD_FALLBACK_LIBRARY_PATH=$MONO_PREFIX/lib:/usr/lib:$DYLD_LIBRARY_FALLBACK_PATH
+export LD_LIBRARY_PATH=$MONO_PREFIX/lib:$LD_LIBRARY_PATH
+export C_INCLUDE_PATH=$MONO_PREFIX/include
+export ACLOCAL_PATH=$MONO_PREFIX/share/aclocal
+export PKG_CONFIG_PATH=$MONO_PREFIX/lib/pkgconfig
+export PATH=$MONO_PREFIX/bin:$PATH
+export MONO_GAC_PREFIX=$MONO_PREFIX
 
 BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 SRC_DIR="$BASE_DIR/src"
@@ -124,5 +146,5 @@ echo "Running tests"
 cp lib/xunit/* $TEST_DIR
 
 for f in $(find $TEST_DIR -name "*.Tests.dll"); do
-    MONO_PATH="$BCL_DIR:$PCL_DIR:lib/xunit:$OUT_DIR" mono --debug lib/xunit.console.exe $f -notrait category=failing -notrait category=OuterLoop
+    mono --debug $TEST_DIR/xunit.console.exe $f -notrait category=failing -notrait category=OuterLoop
 done
