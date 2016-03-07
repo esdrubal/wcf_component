@@ -139,6 +139,11 @@ if [ $DLL_NOT_COMPILED -gt 0 ]; then
 fi
 
 echo
+echo "Packaging NuGet"
+
+nuget pack "nuget/Mono.System.Private.ServiceModel.nuspec" -OutputDirectory "bin" -BasePath "././"
+
+echo
 echo "Running tests"
 
 cp lib/xunit/* $TEST_DIR
