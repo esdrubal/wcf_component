@@ -116,7 +116,7 @@ Task("BuildMono")
 {
     StartProcess(GitToolPath, "clone git@github.com:mono/mono.git");
     StartProcess("bash", new ProcessSettings {
-        Arguments = "autogen.sh --prefix=" + MonoPrefix,
+        Arguments = "autogen.sh --disable-nls --prefix=" + MonoPrefix,
         WorkingDirectory = "mono"
     });
     StartProcess("make", new ProcessSettings {
