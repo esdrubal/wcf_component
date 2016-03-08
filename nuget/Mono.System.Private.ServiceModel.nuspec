@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd">
+  <metadata minClientVersion="3.0">
+    <id>Mono.System.Private.ServiceModel</id>
+    <version>4.5.0.0</version>
+    <title>Mono.System.Private.ServiceModel</title>
+    <authors>Mono,Xamarin</authors>
+    <owners>mono,xamarin</owners>
+    <projectUrl>https://github.com/esdrubal/wcf_component</projectUrl>
+    <licenseUrl>https://raw.githubusercontent.com/mono/mono/master/LICENSE</licenseUrl>
+    <iconUrl>https://avatars2.githubusercontent.com/u/53395?v=3&amp;s=256</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Provides implementation of System.ServiceModel packages.</description>
+    <copyright>Copyright © Mono Authors. All rights reserved.</copyright>
+  </metadata>
+  <files>
+    <file src="bin/System.ServiceModel/*.dll" target="lib/net45" />
+    <file src="bin/System.ServiceModel/*.dll" target="lib/xamarin.ios" />
+    <file src="bin/System.ServiceModel/*.dll" target="lib/monoandroid" />
+    <file src="bin/System.ServiceModel/*.dll" target="lib/xamarin.mac" />
+  </files>
+</package>
