@@ -172,7 +172,7 @@ Task("Package")
     .IsDependentOn("Build")
     .Does(() =>
 {
-    NuGetPack("./nuget/Mono.System.Private.ServiceModel.nuspec", new NuGetPackSettings {
+    NuGetPack("./nuget/Mono.DotNet.WCF.nuspec", new NuGetPackSettings {
         OutputDirectory = "./bin",
         BasePath = "././"
     });
