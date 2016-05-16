@@ -284,9 +284,15 @@ Task("Tests")
     CopyDirectory("./lib/xunit", TestDir);
 
     var tests = GetFiles(TestDir.FullPath + "/*.Tests.dll");
+    var failedTests = 0;
     foreach (var test in tests) {
-        StartProcess(TestDir.CombineWithFilePath("xunit.console.exe"), test + " -notrait category=failing -notrait category=OuterLoop");
+        var exitCode = StartProcess(TestDir.CombineWithFilePath("xunit.console.exe"), test + " -notrait category=failing -notrait category=OuterLoop");
+        if (exitCode != 0)
+            failedTests++;
     }
+
+    if (failedTests > 0)
+        Error("Tests failed: {0} out of {1}", failedTests, tests.Count);
 });
 
 //////////////////////////////////////////////////////////////////////
